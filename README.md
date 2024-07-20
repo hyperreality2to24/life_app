@@ -4,6 +4,7 @@ This project simulates Conway's Game of Life using Pygame. It allows users to st
 
 ![Conway's Game of Life](screenshot.png)
 
+
 ## Description
 
 Conway's Game of Life is a cellular automaton devised by mathematician John Conway. The game consists of a grid of cells that evolve over discrete time steps according to a set of rules based on the states of neighboring cells. This project provides an interactive simulation of the game.
