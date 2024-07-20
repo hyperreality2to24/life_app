@@ -157,8 +157,11 @@ This is a script for `setuptools`, which is a Python package used for distributi
 - A button that clears the grid
 - A button that saves the grid state to a file, or loads the grid state from a file
 - a button that pre-populates the grid with some of the famous life patterns like the spaceship in the screenshot above (see https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life for more).
+- a button that reverts the grid to the state it was last started with (i.e. before the last time the start button was pressed)
 - Showing a life surrounded by >2 neighbours in a different colour indicating it will die next generation
 - Showing an empty cell surrounded by 3 neighbours in a different colour indicating it will come to life next generation
+- A counter of how many cells are alive
+- a high water mark of the most cells that have been alive at any moment during the simulation
 
 ## Contributing
 
