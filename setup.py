@@ -4,8 +4,8 @@ setup(
     name='GameOfLife',
     version='0.1.0',
     description='A Conway\'s Game of Life simulation using Pygame',
-    author='Your Name',
-    author_email='your.email@example.com',
+    author='Richard Morris',
+    author_email='richard.morris@anu.edu.au',
     packages=find_packages(where='src'),
     package_dir={'': 'src'},
     install_requires=[

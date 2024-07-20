@@ -33,6 +33,8 @@ This project demonstrates best practices for structuring a Python project, inclu
 ```
 GameOfLife/
 │
+├── .venv/                      # virtual environment directory
+│
 ├── src/
 │   ├── GameOfLife/
 │   │   ├── __init__.py         # Initializes the GameOfLife package
@@ -82,18 +84,22 @@ Make sure you have Python 3.7+ installed. It's also recommended to use a virtual
 2. **Set up a virtual environment**:
     ```bash
     python -m venv .venv
-    source .venv/bin/activate    # On Windows use `.venv\Scripts\activate`
+    .\.venv\Scripts\Activate.ps1`
     ```
 
 3. **Install the dependencies**:
     ```bash
     pip install -r requirements.txt
     ```
+This will make sure that the packages pygame and pytest are both installed in your virtual environment.
+
 
 4. **Install the package**:
     ```bash
-    pip install .
+    pip install -e .
     ```
+This will install the package into your virtual environment in editable mode, which means that changes you make to the source code will be reflected when you run the application.
+
 
 ### Running the Application
 
