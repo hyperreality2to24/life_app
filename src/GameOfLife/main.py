@@ -10,11 +10,13 @@ CELL_SIZE = 10
 FPS = 10
 
 # Colors
-WHITE = (255, 255, 255)
-BLACK = (0, 0, 0)
-GRAY = (200, 200, 200)
-GREEN = (0, 255, 0)
-RED = (255, 0, 0)
+CLR_TEXT = (255, 255, 255) # White
+CLR_BACKGROUND = (0, 0, 0) # Black
+CLR_GRID = (200, 200, 200) # Gray 
+CLR_LIFE = (0, 255, 0)     # Green
+CLR_DEAD = (255, 255, 255) # White
+CLR_START = (0, 0, 255)    # Blue
+CLR_STOP = (255, 0, 0)     # Red
 
 def draw_grid(surface, grid):
     """
@@ -22,13 +24,13 @@ def draw_grid(surface, grid):
 
     Parameters:
         surface (pygame.Surface): The surface to draw on.
-        grid (list of list of bool): The current state of the grid.
+        grid (Grid): The grid object representing the state of the grid.
     """
-    for row in range(GRID_HEIGHT):
-        for col in range(GRID_WIDTH):
-            color = GREEN if grid[row][col] else WHITE
+    for row in range(grid.height):
+        for col in range(grid.width):
+            color = CLR_LIFE if grid.is_alive(row, col) else CLR_DEAD
             pygame.draw.rect(surface, color, (col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE))
-            pygame.draw.rect(surface, GRAY, (col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
+            pygame.draw.rect(surface, CLR_GRID, (col * CELL_SIZE, row * CELL_SIZE, CELL_SIZE, CELL_SIZE), 1)
 
 def main():
     """
@@ -43,13 +45,13 @@ def main():
     button_font = pygame.font.Font(None, 36)
 
     while True:
-        screen.fill(BLACK)
+        screen.fill(CLR_BACKGROUND)
         draw_grid(screen, game.grid)
 
         # Draw start/stop button
         button_text = "Stop" if is_running else "Start"
-        button_color = RED if is_running else GREEN
-        button_surface = button_font.render(button_text, True, WHITE, button_color)
+        button_color = CLR_STOP if is_running else CLR_START
+        button_surface = button_font.render(button_text, True, CLR_TEXT, button_color)
         button_rect = button_surface.get_rect(center=(WINDOW_WIDTH - 50, 30))
         screen.blit(button_surface, button_rect)
 
@@ -58,8 +60,8 @@ def main():
                 pygame.quit()
                 sys.exit()
             elif event.type == MOUSEBUTTONDOWN:
-                if button_rect.collidepoint(event.pos):  # Start/stop button clicked
-                    is_running = not is_running          # Toggle the running state
+                if button_rect.collidepoint(event.pos):
+                    is_running = not is_running
                 elif not is_running:
                     col, row = event.pos
                     game.toggle_cell(row // CELL_SIZE, col // CELL_SIZE)
@@ -68,7 +70,7 @@ def main():
             game.update_grid()
 
         pygame.display.flip()
-        clock.tick(FPS)  # Limit the frame rate to FPS by sleeping the correct amount of time
+        clock.tick(FPS)
 
 if __name__ == '__main__':
     main()
