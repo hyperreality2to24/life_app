@@ -2,8 +2,7 @@
 
 This project simulates Conway's Game of Life using Pygame. It allows users to start and stop the simulation, and to toggle cells between alive and dead states.
 
-![Conway's Game of Life](screenshot.png)
-
+![Conway's Game of Life - MWSS the middle weight spaceship](screenshot.png)
 
 ## Description
 
@@ -148,6 +147,18 @@ This is a script for `setuptools`, which is a Python package used for distributi
 - **package_dir**: Tells `setuptools` that the root package directory is `src`.
 - **install_requires**: Lists the dependencies (same as in `requirements.txt`).
 - **entry_points**: Defines console scripts that should be made available. In this case, it creates a command `life_app` that runs the `main` function from `GameOfLife.main`.
+
+## Ideas for improvement
+
+- The colours could be a little nicer.
+- The grid could be made larger or smaller.
+- The speed of the simulation could be adjusted.
+- Display buttons to the side of the grid
+- A button that clears the grid
+- A button that saves the grid state to a file, or loads the grid state from a file
+- a button that pre-populates the grid with some of the famous life patterns like the spaceship in the screenshot above (see https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life for more).
+- Showing a life surrounded by >2 neighbours in a different colour indicating it will die next generation
+- Showing an empty cell surrounded by 3 neighbours in a different colour indicating it will come to life next generation
 
 ## Contributing
 
